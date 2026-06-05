@@ -77,6 +77,9 @@ if uploaded_file:
 
                 st.success("¡Análisis completado!")
 
+                extraccion = ""
+                reporte = ""
+
                 # Mostrar extraccion.txt
                 try:
                     with open("extraccion.txt", "r") as f:

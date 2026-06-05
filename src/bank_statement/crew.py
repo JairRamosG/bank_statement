@@ -30,13 +30,15 @@ class BankStatement():
     def research_task(self) -> Task:
         return Task(
             config=self.tasks_config['research_task'], 
+            output_file = 'extraccion.txt'
         )
 
     @task
     def reporting_task(self) -> Task:
         return Task(
             config=self.tasks_config['reporting_task'], 
-            output_file='report.md'
+            context = [self.research_task()],
+            output_file='reporte.txt'
         )
 
     @crew

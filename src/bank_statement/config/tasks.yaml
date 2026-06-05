@@ -1,4 +1,4 @@
-read_pdf_task:
+research_task:
   description: >
     Extract and structure all key information from the following bank statement {document}
     Extract exactly:
