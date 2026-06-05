@@ -15,9 +15,14 @@ research_task:
     - Top 3 largest income transactions
     - Top 3 largest expense transactions
   expected_output: >
-    Structured plain text in Spanish with clearly labeled sections
-    for each data point extracted. Use labels like:
-    TITULAR:, RFC:, PERIODO:, SALDO INICIAL:, etc.
+      Structured plain text in Spanish with clearly labeled sections.
+      Include a JSON block at the end with key financial figures:
+      
+      Example format:
+      TITULAR: Juan Perez
+      RFC: XXXX123456
+      MOVIMIENTOS:
+      - 01-04-2025 | Transferencia recibida | $1,000.00 | Ingreso
   agent: extractor
   output_file: extraccion.txt
 
@@ -31,8 +36,8 @@ reporting_task:
     - Notable observations or anomalies
     - General conclusion about financial health of the period
   expected_output: >
-    A well structured executive report in Spanish, written in clear
-    natural language for a non-specialist reader. Use sections with
-    headers for each topic.
+      A well structured report in Spanish using markdown format.
+      Do NOT use markdown tables. Use bullet points and labeled
+      sections instead. Use # for headers, ## for sections, and - for lists.
   agent: analista
   output_file: reporte.txt
