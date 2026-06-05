@@ -1,17 +1,41 @@
-research_task:
+read_pdf_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Extract and structure all key information from the following bank statement:
+
+    {documento}
+
+    Extract exactly:
+    - Account holder name
+    - RFC/CURP
+    - Cust id
+    - Dirección
+    - Periodo cubierto
+    - Saldo Inicial
+    - Entradas
+    - Salidas
+    - Saldo final
+    - Complete list of transactions with date, description, amount and type (income, expense, earnings)
+    - Top 3 largest income transactions
+    - Top 3 largest expense transactions
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    Structured plain text in Spanish with clearly labeled sections
+    for each data point extracted. Use labels like:
+    TITULAR:, RFC:, PERIODO:, SALDO INICIAL:, etc.
+  agent: extractor
+  output_file: extraccion.txt
 
 reporting_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Based on the extracted bank statement data, generate a complete executive report in Spanish that includes:
+    - Brief profile of the account holder
+    - Financial summary of the period
+    - Analysis of income sources and their origin
+    - Analysis of expenses and spending patterns
+    - Notable observations or anomalies
+    - General conclusion about financial health of the period
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A well structured executive report in Spanish, written in clear
+    natural language for a non-specialist reader. Use sections with
+    headers for each topic.
+  agent: analista
+  output_file: reporte.txt
