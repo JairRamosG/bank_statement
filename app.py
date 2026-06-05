@@ -71,7 +71,7 @@ if uploaded_file:
 
     if st.button("Analizar estado de cuenta"):
         with st.spinner("Los agentes están analizando tu documento..."):
-            inputs = {'documento': texto}
+            inputs = {'document': texto}
             try:
                 result = BankStatement().crew().kickoff(inputs=inputs)
 

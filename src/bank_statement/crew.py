@@ -7,33 +7,35 @@ from crewai.agents.agent_builder.base_agent import BaseAgent
 class BankStatement():
     """BankStatement crew"""
 
+# Agentes -----------------------------------------------------------------------------
     agents: list[BaseAgent]
     tasks: list[Task]
 
     @agent
-    def researcher(self) -> Agent:
+    def extractor(self) -> Agent:
         return Agent(
-            config=self.agents_config['researcher'], # type: ignore[index]
-            verbose=True
+            config=self.agents_config['extractor'],
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
+    def analista(self) -> Agent:
         return Agent(
-            config=self.agents_config['reporting_analyst'], # type: ignore[index]
+            config=self.agents_config['analista'], 
             verbose=True
         )
 
+
+# Tareas ------------------------------------------------------------------------------
     @task
     def research_task(self) -> Task:
         return Task(
-            config=self.tasks_config['research_task'], # type: ignore[index]
+            config=self.tasks_config['research_task'], 
         )
 
     @task
     def reporting_task(self) -> Task:
         return Task(
-            config=self.tasks_config['reporting_task'], # type: ignore[index]
+            config=self.tasks_config['reporting_task'], 
             output_file='report.md'
         )
 
